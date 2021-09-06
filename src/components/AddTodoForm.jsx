@@ -2,11 +2,12 @@
 
 
 //ОНА ДОЛЖНА ОТКРЫВАТЬСЯ??
+//поговорим про мутирующие состояния
 import { useState } from "react";
 import { useTodos } from "../hooks/useTodos";
 
 export default function AddTodoForm() {
-  const [todos, dispatchTodos] = useTodos();
+  const [, dispatchTodos] = useTodos();
   const [body, setBody] = useState(""); //строка будет изменяться?
 
   function addNewTodo(event) {
@@ -22,7 +23,7 @@ export default function AddTodoForm() {
       <input
         name="body"
         type="text"
-        className="field"
+        className="field todo"
         placeholder="Add some task"
         autoComplete="off"
         required

@@ -1,22 +1,23 @@
 import AddTodoForm from "./components/AddTodoForm";
-import { useTodos } from "./hooks/useTodos";
-
-
-
-
-
+import TodoList from "./components/TodoList";
+import { TodosProvider, useTodos } from "./hooks/useTodos";
 
 function App() {
   const [num, dispatchNum] = useTodos();
   return (
-    
     <div className="App">
-      <div className="section">
-      <div className="container">
-      <h1 className="main-title">Todo</h1>
-
-        <AddTodoForm></AddTodoForm>
+      <div className="header">
+        <div className="container">
+          <h1 className="main-title">Todo</h1>
+        </div>
       </div>
+      <div className="section">
+        <div className="container">
+          <AddTodoForm></AddTodoForm>
+          <div className="todos-wraper">
+            <TodoList></TodoList>
+          </div>
+        </div>
       </div>
     </div>
   );
