@@ -4,35 +4,35 @@ import Todo from "./Todo";
 
 export default function TodoList() {
   const [todos] = useTodos();
-
-  //     const [filtered, setFiltered] = useState(todos)
-  //     console.log(filtered);
-  //     function todoFilter(status) {
-  //       if (status === 'all'){
-  //         setFiltered(todos)
-  //       }
-  //       else{
-  //         let newTodo = [...todos].filter(item => item.status === status)
-  //         setFiltered(newTodo)
-  //       }
-  //     }
+  const [todosCopy, settodosCopy] = useState([]);
+  const [filterType, setfilterType] = useState(null);
+  useEffect(() => {
+    settodosCopy(todos);
+  }, [todos]);
+  useEffect(() => {
+    console.log(filterType);
+    if(filterType){
+      const [key, order] = filterType.split('/')
+      settodosCopy(prev => [...prev].sort((a,b) => (a[key] - b[key]) * order))
+    }
+  }, [filterType, todos]);
 
   return (
     <div className="todos">
-      {todos.map((todo) => (
+      {todosCopy.map((todo) => (
         <Todo key={todo.id} todo={todo}></Todo>
       ))}
-      {todos.length > 0 && (
+      {todosCopy.length > 0 && (
         <div className="todo-footer">
           <span className="count-items">{todos.length} items left</span>
           <div className="btn-filter-group">
             <button /*onClick={() => 'all'}*/ className="btn-filter">
               All
             </button>
-            <button /*onClick={() => todoFilter(2)}*/ className="btn-filter">
+            <button onClick={() => setfilterType('status/1')} className="btn-filter">
               Active
             </button>
-            <button /*onClick={() => todoFilter(3)}*/ className="btn-filter">
+            <button onClick={() => setfilterType('status/-1')} className="btn-filter">
               Completed
             </button>
           </div>
@@ -42,3 +42,15 @@ export default function TodoList() {
     </div>
   );
 }
+
+//     const [filtered, setFiltered] = useState(todos)
+//     console.log(filtered);
+//     function todoFilter(status) {
+//       if (status === 'all'){
+//         setFiltered(todos)
+//       }
+//       else{
+//         let newTodo = [...todos].filter(item => item.status === status)
+//         setFiltered(newTodo)
+//       }
+//     }
