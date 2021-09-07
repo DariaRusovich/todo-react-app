@@ -232,6 +232,7 @@ input[type="checkbox"]:focus-within {
   padding: 15px;
   background-color: #fff;
   border: 2px solid transparent;
+  border-radius: 5px;
 }
 
 .todos {
@@ -241,6 +242,7 @@ input[type="checkbox"]:focus-within {
   box-shadow: 3px 8px 15px hsl(294deg 45% 67% / 30%);
   margin-top: 25px;
   background-color: #fff;
+  border-radius: 5px;
 }
 
 .todo {
@@ -263,6 +265,9 @@ input[type="checkbox"]:focus-within {
   padding: 20px 20px 20px 15px;
   border-bottom: 1px solid #ccc;
   overflow: auto;
+}
+.todo-field:first-child{
+  border-radius: 5px 5px 0 0;
 }
 .todo-item-wraper {
   display: flex;
@@ -305,7 +310,7 @@ text-decoration: line-through;
   justify-content: space-between;
   padding: 15px;
   background-color: #fff;
- 
+  border-radius: 0 0 5px 5px;
   font-size: 14px;
 }
 .count-items {
