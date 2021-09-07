@@ -9,7 +9,7 @@ export default function Todo({ todo }) {
     },
     2: {
       status: "process",
-      statusText: "(your task in process)",
+      statusText: "(this task is active)",
     },
     3: {
       status: "done",
