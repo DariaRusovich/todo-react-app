@@ -170,9 +170,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background:rgba(238, 146, 248, 0.2) ;
 }
 body:focus-within {
-  border-radius: 1px solid hsla(205, 67%, 38%, 0.925);
+  border-radius: 1px solid hsla(205, 67%, 38%, 0.9);
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -211,9 +212,6 @@ code {
   justify-content: center;
   position: relative;
 }
-.todos-wraper {
-  padding-top: 25px;
-}
 .checkbox-field {
   position: absolute;
   left: calc(0% + 10px);
@@ -232,7 +230,9 @@ input:focus-within {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 10px;
+  padding-top: 25px;
+  border-radius: 5px;
+  box-shadow: 3px 8px 15px hsl(294deg 45% 67% / 30%);
 }
 
 .todo {
@@ -240,9 +240,8 @@ input:focus-within {
   padding: 15px 15px 15px 40px;
   width: 100%;
   background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 3px 8px 15px rgba(32, 108, 164, 0.3);
 }
 .todo-field {
   padding: 25px 15px 25px 40px;
+  border-bottom: 1px solid #ccc;
 }

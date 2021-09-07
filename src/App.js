@@ -14,9 +14,7 @@ function App() {
       <div className="section">
         <div className="container">
           <AddTodoForm></AddTodoForm>
-          <div className="todos-wraper">
-            <TodoList></TodoList>
-          </div>
+          <TodoList></TodoList>
         </div>
       </div>
     </div>
