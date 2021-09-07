@@ -170,7 +170,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background:rgba(238, 146, 248, 0.2) ;
+  background: rgba(238, 146, 248, 0.2);
 }
 body:focus-within {
   border-radius: 1px solid hsla(205, 67%, 38%, 0.9);
@@ -179,6 +179,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.todo-form:focus,
+.todo-form:focus-within {
+  border: 2px solid hsla(205, 67%, 38%, 0.925);
+}
+.todo-form:focus,
+.todo-form:focus-within,
+.todo-form input:focus,
+.todo-form input:focus-within {
+  outline: none;
+}
+input[type="checkbox"]:focus-within {
+  outline: 1px solid hsla(205, 67%, 38%, 0.925);
+}
+.field::placeholder{
+  color: hsla(205, 67%, 38%, 0.756);
+}
+.container {
+  width: 100%;
+  max-width: 450px;
+}
+/*===========COMMON STYLES END============*/
+
+
 
 .header {
   padding: 130px 0;
@@ -197,9 +220,7 @@ code {
   position: relative;
   top: -100px;
 }
-.container {
-  width: 450px;
-}
+
 .main-title {
   text-transform: uppercase;
   font-weight: 700;
@@ -209,39 +230,64 @@ code {
 }
 .todo-form {
   display: flex;
-  justify-content: center;
-  position: relative;
+  align-items: flex-end;
+  padding: 15px;
+  background-color: #fff;
+  border: 2px solid transparent;
 }
-.checkbox-field {
-  position: absolute;
-  left: calc(0% + 10px);
-  top: 45%;
-  transform: translateY(-50%);
-}
-input:focus,
-input:focus-within {
-  outline: none;
-  border: 2px solid hsla(205, 67%, 38%, 0.925);
-}
-.checkbox-field:focus-within {
-  outline: 1px solid hsla(205, 67%, 38%, 0.925);
-}
+
 .todos {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: 25px;
-  border-radius: 5px;
   box-shadow: 3px 8px 15px hsl(294deg 45% 67% / 30%);
+  margin-top: 25px;
 }
 
 .todo {
-  border: 2px solid transparent;
-  padding: 15px 15px 15px 40px;
   width: 100%;
   background-color: #fff;
 }
+.field{
+  padding-left: 15px;
+}
+.todo-body{
+  padding: 5px 5px 4px 15px;
+}
+.todo-body, .field{
+  color: hsl(205, 96%, 19%);
+}
 .todo-field {
-  padding: 25px 15px 25px 40px;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px 20px 20px 15px;
   border-bottom: 1px solid #ccc;
 }
+.todo-item-wraper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.todo-item-wraper>span{
+  color: hsl(205, 96%, 19%);
+  cursor: pointer;
+}
+
+/*===========TODO-FOOTER STYLES START============*/
+.todo-footer{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #fff;
+  color: hsl(205, 96%, 19%);
+  font-size: 14px;
+}
+.count-items{
+  color: hsla(205, 67%, 38%, 0.756);
+  font-size: 12px;
+}
+
+
+/* ===========TODO-FOOTER STYLES END============ */
