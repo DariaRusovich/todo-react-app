@@ -192,7 +192,7 @@ code {
 input[type="checkbox"]:focus-within {
   outline: 1px solid hsla(205, 67%, 38%, 0.925);
 }
-.field::placeholder{
+.field::placeholder {
   color: hsla(205, 67%, 38%, 0.756);
 }
 .container {
@@ -200,8 +200,6 @@ input[type="checkbox"]:focus-within {
   max-width: 450px;
 }
 /*===========COMMON STYLES END============*/
-
-
 
 .header {
   padding: 130px 0;
@@ -248,13 +246,14 @@ input[type="checkbox"]:focus-within {
   width: 100%;
   background-color: #fff;
 }
-.field{
+.field {
   padding-left: 15px;
 }
-.todo-body{
+.todo-body {
   padding: 5px 5px 4px 15px;
 }
-.todo-body, .field{
+.todo-body,
+.field {
   color: hsl(205, 96%, 19%);
 }
 .todo-field {
@@ -263,31 +262,50 @@ input[type="checkbox"]:focus-within {
   padding: 20px 20px 20px 15px;
   border-bottom: 1px solid #ccc;
 }
-.todo-item-wraper{
+.todo-item-wraper {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
-.todo-item-wraper>span{
+.todo-item-wraper > span {
   color: hsl(205, 96%, 19%);
   cursor: pointer;
 }
+/*===========TODO STATUS STYLES START============*/
+.todo.new{
+  
+}
+.todo.process{
+  background-color: hsl(278, 100%, 94%);
+}
+.todo.done{
+  text-decoration: line-through;
+}
+
+/*===========TODO STATUS STYLES END============*/
 
 /*===========TODO-FOOTER STYLES START============*/
-.todo-footer{
+.todo-footer {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   padding: 15px;
   background-color: #fff;
-  color: hsl(205, 96%, 19%);
+ 
   font-size: 14px;
 }
-.count-items{
+.count-items {
   color: hsla(205, 67%, 38%, 0.756);
   font-size: 12px;
 }
+.btn-filter-group > button, .btn-clear-all {
+  font-weight: 700;
+  color: hsla(205, 67%, 38%, 0.7);
+}
 
-
+.btn-filter-group > button:hover,
+.btn-clear-all:hover {
+  color: hsla(205, 67%, 38%, 0.9);
+}
 /* ===========TODO-FOOTER STYLES END============ */
