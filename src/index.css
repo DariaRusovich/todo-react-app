@@ -279,13 +279,10 @@ input[type="checkbox"]:focus-within {
 .todo.process{
   background: linear-gradient(
     114.14deg,
-    rgba(238, 146, 248, 0.3) 0%,
-    rgba(21, 56, 150, 0.4) 99%
+    rgba(238, 146, 248, 0.2) 0%,
+    rgba(21, 56, 150, 0.2) 99%
   );
   color: hsla(226, 100%, 81%, 0.5);
-}
-.todo.process .btn-delete-todo{
-  color: #fff;
 }
 .todo.process .todo-body{
   color:hsl(205, 96%, 19%);
