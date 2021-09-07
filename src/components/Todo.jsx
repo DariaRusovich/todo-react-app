@@ -26,9 +26,9 @@ export default function Todo({ todo }) {
   }
   return (
     <div className={`todo todo-field ${todoStatuses[todo.status].status}`}>
-      <input onClick={actionTodo} type="checkbox" />
+      <input onClick={actionTodo} type="checkbox" id={todo.id} />
       <div className="todo-item-wraper">
-        <label htmlFor="checkbox" className="todo-body">
+        <label htmlFor={todo.id} className="todo-body">
           {todo.body} <span>{todoStatuses[todo.status].statusText}</span>
         </label>
         <button onClick={deleteTodo} className="btn-delete-todo">
