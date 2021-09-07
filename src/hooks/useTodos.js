@@ -32,6 +32,15 @@ function reducer(state, action) {
             }
             return [...state, newTodo]
         }
+        case 'NEXT_STATUS': {
+            const todoIdx = state.findIndex(todo => todo.id === action.payload)
+            const todo = {...state[todoIdx]}
+            todo.status++
+            todo.updatedAt = Date.now()
+            const newState = [...state]
+            newState.splice(todoIdx, 1, todo)
+            return newState
+        }
         default:
         throw new Error(`Wrong actiot type! (${action.type})`);
     }

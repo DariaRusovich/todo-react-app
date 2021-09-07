@@ -268,7 +268,7 @@ input[type="checkbox"]:focus-within {
   justify-content: space-between;
   width: 100%;
 }
-.todo-item-wraper > span {
+.todo-item-wraper > button {
   color: hsl(205, 96%, 19%);
   cursor: pointer;
 }
@@ -277,12 +277,12 @@ input[type="checkbox"]:focus-within {
   
 }
 .todo.process{
-  background-color: hsl(278, 100%, 94%);
+  background-color: hsl(229, 91%, 92%);
 }
-.todo.done{
-  text-decoration: line-through;
+.todo.done .todo-body{
+text-decoration: line-through;
+ color: hsla(205, 67%, 38%, 0.5);
 }
-
 /*===========TODO STATUS STYLES END============*/
 
 /*===========TODO-FOOTER STYLES START============*/
