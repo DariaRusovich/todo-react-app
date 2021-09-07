@@ -240,6 +240,7 @@ input[type="checkbox"]:focus-within {
   width: 100%;
   box-shadow: 3px 8px 15px hsl(294deg 45% 67% / 30%);
   margin-top: 25px;
+  background-color: #fff;
 }
 
 .todo {
@@ -261,6 +262,7 @@ input[type="checkbox"]:focus-within {
   align-items: flex-end;
   padding: 20px 20px 20px 15px;
   border-bottom: 1px solid #ccc;
+  overflow: auto;
 }
 .todo-item-wraper {
   display: flex;
@@ -273,16 +275,30 @@ input[type="checkbox"]:focus-within {
   cursor: pointer;
 }
 /*===========TODO STATUS STYLES START============*/
-.todo.new{
-  
-}
+
 .todo.process{
-  background-color: hsl(229, 91%, 92%);
+  background: linear-gradient(
+    114.14deg,
+    rgba(238, 146, 248, 0.3) 0%,
+    rgba(21, 56, 150, 0.4) 99%
+  );
+  color: hsla(226, 100%, 81%, 0.5);
+}
+.todo.process .btn-delete-todo{
+  color: #fff;
+}
+.todo.process .todo-body{
+  color:hsl(205, 96%, 19%);
 }
 .todo.done .todo-body{
 text-decoration: line-through;
  color: hsla(205, 67%, 38%, 0.5);
+ 
 }
+.todo-body>span{
+  font-style: italic;
+}
+
 /*===========TODO STATUS STYLES END============*/
 
 /*===========TODO-FOOTER STYLES START============*/

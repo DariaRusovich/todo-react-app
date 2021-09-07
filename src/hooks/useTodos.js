@@ -41,8 +41,14 @@ function reducer(state, action) {
             newState.splice(todoIdx, 1, todo)
             return newState
         }
+        case 'DELETE': {
+            const todoIdx = state.findIndex(todo => todo.id === action.payload)
+            const newState = [...state]
+            newState.splice(todoIdx, 1)
+            return newState
+        }
         default:
-        throw new Error(`Wrong actiot type! (${action.type})`);
+        throw new Error(`Wrong action type! (${action.type})`);
     }
 }
 
