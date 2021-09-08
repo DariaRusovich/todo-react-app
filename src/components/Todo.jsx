@@ -25,7 +25,8 @@ export default function Todo({ todo }) {
     dispatchTodos({ type: "DELETE", payload: todo.id });
   }
   return (
-    <div className={`todo todo-field ${todoStatuses[todo.status].status}`}>
+    <>
+    {todo && <div className={`todo todo-field ${todoStatuses[todo.status].status}`}>
       <input onClick={actionTodo} type="checkbox" id={todo.id} />
       <div className="todo-item-wraper">
         <label htmlFor={todo.id} className="todo-body">
@@ -35,6 +36,7 @@ export default function Todo({ todo }) {
           ╳
         </button>
       </div>
-    </div>
+    </div>}
+    </>
   );
 }

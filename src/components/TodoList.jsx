@@ -16,17 +16,19 @@ export default function TodoList() {
       settodosCopy(prev => [...prev].sort((a,b) => (a[key] - b[key]) * order))
     }
   }, [filterType, todos]);
-
   return (
+    
     <div className="todos">
+      
       {todosCopy.map((todo) => (
+        
         <Todo key={todo.id} todo={todo}></Todo>
       ))}
       {todosCopy.length > 0 && (
         <div className="todo-footer">
           <span className="count-items">{todos.length} items left</span>
           <div className="btn-filter-group">
-            <button /*onClick={() => 'all'}*/ className="btn-filter">
+            <button className="btn-filter">
               All
             </button>
             <button onClick={() => setfilterType('status/1')} className="btn-filter">

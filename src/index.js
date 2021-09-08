@@ -4,20 +4,15 @@ import "./index.css";
 
 import App from "./App";
 import { TodosProvider } from "./hooks/useTodos";
-
-
-
-
-
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <TodosProvider>
-      <App />
-    </TodosProvider>
+    <BrowserRouter>
+      <TodosProvider>
+        <App />
+      </TodosProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
-
-
-
