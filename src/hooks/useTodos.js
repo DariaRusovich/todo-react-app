@@ -35,27 +35,28 @@ function reducer(state, action) {
     case "ADD": {
       const newTodo = {
         id: Date.now(),
-        body: action.payload.body,
+        body: action.payload,
         createdAt: Date.now(),
         updatedAt: null,
-        status: 1,
+        completed: false,
       };
       return [...state, newTodo];
     }
-    case "NEXT_STATUS": {
+    case "SET_COMPLETED": {
       const todoIdx = state.findIndex((todo) => todo.id === action.payload);
       const todo = { ...state[todoIdx] };
-      todo.status++;
+      todo.completed = true;
       todo.updatedAt = Date.now();
       const newState = [...state];
       newState.splice(todoIdx, 1, todo);
       return newState;
     }
     case "DELETE": {
-      const todoIdx = state.findIndex((todo) => todo.id === action.payload);
-      const newState = [...state];
-      newState.splice(todoIdx, 1);
-      return newState;
+      console.log(action.payload);
+      return state.filter(todo => todo.id !== action.payload);
+    }
+    case "DELETE_COMPLETED": {
+      return state.filter(todo => !todo.completed);
     }
     default:
       throw new Error(`Wrong action type! (${action.type})`);

@@ -14,12 +14,12 @@ export default function AddTodoForm() {
     event.preventDefault();
     console.log(body);
     setBody("") //очищаем форму
-    dispatchTodos({type: 'ADD', payload: {body}})
+    dispatchTodos({type: 'ADD', payload: body})
   }
 
   return (
     <form onSubmit={addNewTodo} className="todo-form">
-      <input className="checkbox-field" type="checkbox" name="flag" required />
+      <input className="checkbox-field" type="checkbox" checked={false} readOnly name="flag" />
       <input
         name="body"
         type="text"

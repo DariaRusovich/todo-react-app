@@ -243,6 +243,7 @@ input[type="checkbox"]:focus-within {
   margin-top: 25px;
   background-color: #fff;
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .todo {
@@ -266,9 +267,6 @@ input[type="checkbox"]:focus-within {
   border-bottom: 1px solid #ccc;
   overflow: auto;
 }
-.todo-field:first-child{
-  border-radius: 5px 5px 0 0;
-}
 .todo-item-wraper {
   display: flex;
   align-items: center;
@@ -281,7 +279,7 @@ input[type="checkbox"]:focus-within {
 }
 /*===========TODO STATUS STYLES START============*/
 
-.todo.process{
+/* .todo.process{
   background: linear-gradient(
     114.14deg,
     rgba(238, 146, 248, 0.2) 0%,
@@ -291,14 +289,11 @@ input[type="checkbox"]:focus-within {
 }
 .todo.process .todo-body{
   color:hsl(205, 96%, 19%);
-}
-.todo.done .todo-body{
+} */
+.todo.completed .todo-body{
 text-decoration: line-through;
  color: hsla(205, 67%, 38%, 0.5);
  
-}
-.todo-body>span{
-  font-style: italic;
 }
 
 /*===========TODO STATUS STYLES END============*/
@@ -310,20 +305,24 @@ text-decoration: line-through;
   justify-content: space-between;
   padding: 15px;
   background-color: #fff;
-  border-radius: 0 0 5px 5px;
   font-size: 14px;
 }
 .count-items {
   color: hsla(205, 67%, 38%, 0.756);
   font-size: 12px;
 }
-.btn-filter-group > button, .btn-clear-all {
+.btn-filter, .btn-clear-all {
   font-weight: 700;
   color: hsla(205, 67%, 38%, 0.7);
 }
 
-.btn-filter-group > button:hover,
+.btn-filter:hover,
 .btn-clear-all:hover {
   color: hsla(205, 67%, 38%, 0.9);
 }
+
+.btn-filter.active{
+  text-decoration: underline;
+}
+  
 /* ===========TODO-FOOTER STYLES END============ */

@@ -3,42 +3,60 @@ import { useTodos } from "../hooks/useTodos";
 import Todo from "./Todo";
 
 export default function TodoList() {
-  const [todos] = useTodos();
-  const [todosCopy, settodosCopy] = useState([]);
-  const [filterType, setfilterType] = useState(null);
+  const [todos, dispatchTodos] = useTodos();
+  const [todosCopy, setTodosCopy] = useState([]);
+  const [filterType, setFilterType] = useState(null);
   useEffect(() => {
-    settodosCopy(todos);
+    setTodosCopy(todos);
   }, [todos]);
   useEffect(() => {
-    console.log(filterType);
-    if(filterType){
-      const [key, order] = filterType.split('/')
-      settodosCopy(prev => [...prev].sort((a,b) => (a[key] - b[key]) * order))
-    }
+    filterTodo();
   }, [filterType, todos]);
+
+  function filterTodo() {
+    if (filterType !== null) {
+      setTodosCopy([...todos].filter((todo) => todo.completed === filterType));
+    } else {
+      setTodosCopy(todos);
+    }
+  }
+  function clearCompleted(params) {
+    dispatchTodos({ type: "DELETE_COMPLETED" });
+    setFilterType(null);
+  }
   return (
-    
     <div className="todos">
-      
       {todosCopy.map((todo) => (
-        
         <Todo key={todo.id} todo={todo}></Todo>
       ))}
-      {todosCopy.length > 0 && (
+      {todos.length > 0 && (
         <div className="todo-footer">
-          <span className="count-items">{todos.length} items left</span>
+          <span className="count-items">
+            {todos.filter((todo) => !todo.completed).length} items left
+          </span>
           <div className="btn-filter-group">
-            <button className="btn-filter">
+            <button
+              onClick={() => setFilterType(null)}
+              className={`btn-filter ${filterType === null ? "active" : ""}`}
+            >
               All
             </button>
-            <button onClick={() => setfilterType('status/1')} className="btn-filter">
+            <button
+              onClick={() => setFilterType(false)}
+              className={`btn-filter ${filterType === false ? "active" : ""}`}
+            >
               Active
             </button>
-            <button onClick={() => setfilterType('status/-1')} className="btn-filter">
+            <button
+              onClick={() => setFilterType(true)}
+              className={`btn-filter ${filterType === true ? "active" : ""}`}
+            >
               Completed
             </button>
           </div>
-          <button className="btn-clear-all">Clear completed</button>
+          <button onClick={clearCompleted} className="btn-clear-all">
+            Clear completed
+          </button>
         </div>
       )}
     </div>
