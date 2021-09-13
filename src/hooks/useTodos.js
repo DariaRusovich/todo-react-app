@@ -33,14 +33,7 @@ export function TodosProvider({ children }) {
 function reducer(state, action) {
   switch (action.type) {
     case "ADD": {
-      const newTodo = {
-        id: Date.now(),
-        body: action.payload,
-        createdAt: Date.now(),
-        updatedAt: null,
-        completed: false,
-      };
-      return [...state, newTodo];
+      return [...state, action.payload];
     }
     case "SET_COMPLETED": {
       const todoIdx = state.findIndex((todo) => todo.id === action.payload);

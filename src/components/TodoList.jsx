@@ -20,10 +20,11 @@ export default function TodoList() {
       setTodosCopy(todos);
     }
   }
-  function clearCompleted(params) {
+  function clearCompleted() {
     dispatchTodos({ type: "DELETE_COMPLETED" });
     setFilterType(null);
   }
+
   return (
     <div className="todos">
       {todosCopy.map((todo) => (

@@ -1,21 +1,37 @@
 
-
-
-//ОНА ДОЛЖНА ОТКРЫВАТЬСЯ??
-//поговорим про мутирующие состояния
 import { useState } from "react";
+import { addTodo } from "../api/api";
 import { useTodos } from "../hooks/useTodos";
+
 
 export default function AddTodoForm() {
   const [, dispatchTodos] = useTodos();
-  const [body, setBody] = useState(""); //строка будет изменяться?
+  const [body, setBody] = useState(""); 
 
-  function addNewTodo(event) {
-    event.preventDefault();
-    console.log(body);
+async function addNewTodo(event) {
+  event.preventDefault();
+  console.log(body);
+  
+    const newTodo = {
+      body: body,
+      createdAt: Date.now(),
+      updatedAt: null,
+      completed: false,
+    };
+    console.log(newTodo);
+    const [savedTodo, savedTodoError] = await addTodo(newTodo)
+    
+    if (savedTodo) {
+      dispatchTodos({type: 'ADD', payload: savedTodo})
+      console.log(savedTodo);
+    }
     setBody("") //очищаем форму
-    dispatchTodos({type: 'ADD', payload: body})
   }
+
+
+
+
+
 
   return (
     <form onSubmit={addNewTodo} className="todo-form">

@@ -1,7 +1,7 @@
 import { useTodos } from "../hooks/useTodos";
 
 export default function Todo({ todo }) {
-  const [todos, dispatchTodos] = useTodos();
+  const [, dispatchTodos] = useTodos();
   
   function actionTodo() {
     dispatchTodos({ type: "SET_COMPLETED", payload: todo.id });
