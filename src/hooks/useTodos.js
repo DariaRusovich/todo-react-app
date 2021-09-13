@@ -1,10 +1,13 @@
 import { useReducer, useEffect, useContext, createContext } from "react";
+import { getTodos } from "../api/api";
 
-if (!localStorage.todos) {
-  localStorage.todos = JSON.stringify([]);
-}
+// if (!localStorage.todos) {
+//   localStorage.todos = JSON.stringify([]);
+// }
 
-const inisialState = JSON.parse(localStorage.todos); //initial value which given Todos to all components
+// const inisialState = JSON.parse(localStorage.todos); //initial value which given Todos to all components
+
+const inisialState = [];
 
 const TodosContext = createContext(inisialState);
 //TodosContext consists of two properties which are
@@ -22,6 +25,19 @@ export function TodosProvider({ children }) {
     localStorage.todos = JSON.stringify(state);
   }, [state]);
 
+  useEffect(() => {
+    getInitialTodos();
+  }, []);
+
+  async function getInitialTodos() {
+    const [todos, todosError] = await getTodos();
+    if (todos) {
+      dispatch({ type: "INITIAL", payload: todos });
+      console.log(todos);
+    } else {
+      alert(todosError);
+    }
+  }
   return (
     <TodosContext.Provider value={[state, dispatch]}>
       {children}
@@ -30,9 +46,15 @@ export function TodosProvider({ children }) {
 }
 //The TodosProvider() function is a wrapper function which gets all child elements, components
 //also created useState to get state Todos so that it can change (not simple Todos)
+
 function reducer(state, action) {
   switch (action.type) {
+    case "INITIAL": {
+      console.log(...action.payload);
+      return action.payload;
+    }
     case "ADD": {
+      console.log(action.payload);
       return [...state, action.payload];
     }
     case "SET_COMPLETED": {
@@ -46,10 +68,10 @@ function reducer(state, action) {
     }
     case "DELETE": {
       console.log(action.payload);
-      return state.filter(todo => todo.id !== action.payload);
+      return state.filter((todo) => todo.id !== action.payload);
     }
     case "DELETE_COMPLETED": {
-      return state.filter(todo => !todo.completed);
+      return state.filter((todo) => !todo.completed);
     }
     default:
       throw new Error(`Wrong action type! (${action.type})`);

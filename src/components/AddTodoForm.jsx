@@ -19,6 +19,7 @@ async function addNewTodo(event) {
       completed: false,
     };
     console.log(newTodo);
+    console.log(addTodo);
     const [savedTodo, savedTodoError] = await addTodo(newTodo)
     
     if (savedTodo) {
